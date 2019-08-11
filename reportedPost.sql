@@ -48,7 +48,7 @@ Result table:
 Note that we only care about report reasons with non zero number of reports.
 */
 # Write your MySQL query statement below
-select extra as report_reason, count(distinct post_id) as report_count
+select extra as report_reason, ifnull(count(distinct post_id,0)) as report_count
 from Actions
 where action_date = "2019-07-04"
 and action = "report"
