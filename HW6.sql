@@ -1,3 +1,10 @@
+/*
+Homework 6
+Name: Mengjie Yu
+UTEID: my3852, UTCS username:annayu12
+CS f347, Summer 2013, Dr. P. Cannata
+Department of Computer Science, The University of Texas at Austin
+*/
 CREATE OR REPLACE TRIGGER invoices_after_update
 AFTER UPDATE OF payment_total
 ON cp_invoices
