@@ -89,6 +89,7 @@ action_date | removal_rate
 
 fourth, calculate daily average removal precentage. Round to 2 decimal places 
 */
+<<<<<<< HEAD
 
 select round(100 *sum(tmp.removal_rate)/count(*),2) as average_daily_percent 
 from
@@ -104,3 +105,18 @@ from
 	on a.post_id = r.post_id
 	group by a.action_date
 )tmp
+=======
+select round(100 *sum(tmp.removal_rate)/count(*),2) as average_daily_percent 
+from
+(
+select a.action_date, 
+sum(case when r.remove_date is not null then 1 else 0 end)/count(*) as removal_rate
+from 
+( select distinct action_date, post_id from Actions 
+  where extra = "spam"
+ ) a
+left join Removals r
+on a.post_id = r.post_id
+group by a.action_date
+)tmp
+>>>>>>> a7b4ebd93f2887892e4f77786092548918196254
