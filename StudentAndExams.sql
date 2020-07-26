@@ -99,14 +99,15 @@ Alex didn't attend any exam.
 John attended Math exam 1 time, Physics exam 1 time and Programming exam 1 time.
 */
 
+# Write your MySQL query statement below
 SELECT 
 t1.student_id,
-s.student_name,
+t1.student_name,
 t1.subject_name,
 CASE WHEN t2.attended_exams IS NULL THEN 0 ELSE t2.attended_exams END AS attended_exams
 FROM
 (
-    SELECT student_id, subject_name
+    SELECT student_id, student_name, subject_name
     FROM Students 
     CROSS JOIN Subjects
  )t1
@@ -125,9 +126,10 @@ LEFT JOIN
 )t2
 ON 
 t1.student_id = t2.student_id AND t1.subject_name = t2.subject_name
-INNER JOIN 
-Students s
-ON t1.student_id = s.student_id
 ORDER BY t1.student_id, t1.subject_name
+
+ 
+
+
 
 
